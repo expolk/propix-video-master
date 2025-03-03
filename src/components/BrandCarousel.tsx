@@ -10,22 +10,22 @@ const BrandCarousel = ({ className }: BrandCarouselProps) => {
   const { t } = useLanguage();
   
   const brands = [
-    { name: "Merck", logo: "/placeholder.svg" },
-    { name: "Target", logo: "/placeholder.svg" },
-    { name: "Pentax", logo: "/placeholder.svg" },
-    { name: "P&G", logo: "/placeholder.svg" },
-    { name: "Meta", logo: "/placeholder.svg" },
-    { name: "Amazon", logo: "/placeholder.svg" },
-    { name: "Google", logo: "/placeholder.svg" },
-    { name: "BBC", logo: "/placeholder.svg" },
-    { name: "NBC Universal", logo: "/placeholder.svg" },
-    { name: "UBS", logo: "/placeholder.svg" },
+    { name: t("brand_name_merck"), logo: "/placeholder.svg" },
+    { name: t("brand_name_target"), logo: "/placeholder.svg" },
+    { name: t("brand_name_pentax"), logo: "/placeholder.svg" },
+    { name: t("brand_name_p&g"), logo: "/placeholder.svg" },
+    { name: t("brand_name_meta"), logo: "/placeholder.svg" },
+    { name: t("brand_name_amazon"), logo: "/placeholder.svg" },
+    { name: t("brand_name_google"), logo: "/placeholder.svg" },
+    { name: t("brand_name_bbc"), logo: "/placeholder.svg" },
+    { name: t("brand_name_nbc"), logo: "/placeholder.svg" },
+    { name: t("brand_name_ubs"), logo: "/placeholder.svg" },
     // Duplicating to create a seamless loop effect
-    { name: "Merck", logo: "/placeholder.svg" },
-    { name: "Target", logo: "/placeholder.svg" },
-    { name: "Pentax", logo: "/placeholder.svg" },
-    { name: "P&G", logo: "/placeholder.svg" },
-    { name: "Meta", logo: "/placeholder.svg" },
+    { name: t("brand_name_merck"), logo: "/placeholder.svg" },
+    { name: t("brand_name_target"), logo: "/placeholder.svg" },
+    { name: t("brand_name_pentax"), logo: "/placeholder.svg" },
+    { name: t("brand_name_p&g"), logo: "/placeholder.svg" },
+    { name: t("brand_name_meta"), logo: "/placeholder.svg" },
   ];
 
   return (
