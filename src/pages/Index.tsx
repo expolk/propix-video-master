@@ -6,6 +6,7 @@ import Hero from "@/components/Hero";
 import FeatureCard from "@/components/FeatureCard";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BrandCarousel from "@/components/BrandCarousel";
 
 const Index = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -84,6 +85,11 @@ const Index = () => {
       
       <main className="overflow-x-hidden">
         <Hero />
+        
+        {/* Brand Carousel Section */}
+        <section className="py-10 border-t border-b border-gray-100 bg-gray-50">
+          <BrandCarousel />
+        </section>
         
         {/* Features Section */}
         <section className="py-20 px-6" data-section="features">

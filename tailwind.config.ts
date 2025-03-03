@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -114,6 +113,10 @@ export default {
 				'zoom-in': {
 					'0%': { transform: 'scale(0.95)', opacity: '0' },
 					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
+				'marquee': {
+					'0%': { transform: 'translateX(0)' },
+					'100%': { transform: 'translateX(calc(-50%))' }
 				}
 			},
 			animation: {
@@ -122,7 +125,8 @@ export default {
 				'fade-in': 'fade-in 0.6s ease-in-out',
 				'fade-in-up': 'fade-in-up 0.7s ease-out',
 				'slide-in-right': 'slide-in-right 0.5s ease-out',
-				'zoom-in': 'zoom-in 0.5s cubic-bezier(0.2, 0, 0.2, 1)'
+				'zoom-in': 'zoom-in 0.5s cubic-bezier(0.2, 0, 0.2, 1)',
+				'marquee': 'marquee 30s linear infinite',
 			}
 		}
 	},
