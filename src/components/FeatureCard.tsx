@@ -1,30 +1,39 @@
 
+import React from "react";
 import { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { CSSProperties } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FeatureCardProps {
+  icon: LucideIcon;
   title: string;
   description: string;
-  icon: LucideIcon;
   className?: string;
-  style?: CSSProperties;
+  style?: React.CSSProperties;
 }
 
-const FeatureCard = ({ title, description, icon: Icon, className, style }: FeatureCardProps) => {
+const FeatureCard = ({ 
+  icon: Icon, 
+  title, 
+  description, 
+  className,
+  style 
+}: FeatureCardProps) => {
+  const { t } = useLanguage();
+  
   return (
     <div 
       className={cn(
-        "bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1",
+        "bg-white rounded-xl p-6 shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:border-propix-100",
         className
       )}
       style={style}
     >
-      <div className="bg-propix-50 h-12 w-12 rounded-lg flex items-center justify-center text-propix-600 mb-4">
+      <div className="bg-propix-50 h-12 w-12 rounded-full flex items-center justify-center text-propix-600 mb-5">
         <Icon size={24} />
       </div>
-      <h3 className="text-xl font-medium text-gray-900 mb-3">{title}</h3>
-      <p className="text-gray-600">{description}</p>
+      <h3 className="text-xl font-bold text-gray-900 mb-3">{t(title)}</h3>
+      <p className="text-gray-600">{t(description)}</p>
     </div>
   );
 };

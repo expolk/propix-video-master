@@ -22,7 +22,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     // Check if user has previously selected a language
     const savedLanguage = localStorage.getItem("preferredLanguage") as Language;
-    if (savedLanguage) {
+    if (savedLanguage && (savedLanguage === "en" || savedLanguage === "es")) {
       setLanguage(savedLanguage);
     }
   }, []);
@@ -36,6 +36,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         setTranslations(translationsModule.default);
       } catch (error) {
         console.error("Failed to load translations:", error);
+        // Fallback to empty translations object
         setTranslations({});
       } finally {
         setIsLoading(false);
@@ -52,6 +53,11 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     return translations[key] || key;
   };
 
+  // Don't render children until translations are loaded
+  if (isLoading) {
+    return <div className="h-screen w-screen flex items-center justify-center">Loading...</div>;
+  }
+
   return (
     <LanguageContext.Provider
       value={{
@@ -61,7 +67,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         t,
       }}
     >
-      {!isLoading && children}
+      {children}
     </LanguageContext.Provider>
   );
 };
