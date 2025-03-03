@@ -214,7 +214,7 @@ const Index = () => {
                     </video>
                   </div>
                   <div className="p-4 border-t border-gray-100">
-                    <h4 className="font-medium text-gray-900">See how quick & easy Propix is to use</h4>
+                    <h4 className="font-medium text-gray-900">{t("See how quick & easy Propix is to use")}</h4>
                   </div>
                 </div>
               </div>
@@ -250,20 +250,20 @@ const Index = () => {
                   </div>
                   
                   <blockquote className="text-gray-700 mb-4">
-                    "Propix has completely transformed how I showcase my listings. I'm getting more interest from buyers and impressing sellers at listing presentations. It's worth every penny!"
+                    {t("Propix has completely transformed how I showcase my listings. I'm getting more interest from buyers and impressing sellers at listing presentations. It's worth every penny!")}
                   </blockquote>
                   
                   <div className="flex items-center">
                     <div className="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
                       <img 
                         src="/placeholder.svg" 
-                        alt="Agent portrait" 
+                        alt={t("Agent portrait")} 
                         className="h-full w-full object-cover"
                       />
                     </div>
                     <div>
-                      <div className="font-medium text-gray-900">Sarah Johnson</div>
-                      <div className="text-sm text-gray-500">Premier Properties, NYC</div>
+                      <div className="font-medium text-gray-900">{t("Sarah Johnson")}</div>
+                      <div className="text-sm text-gray-500">{t("Premier Properties, NYC")}</div>
                     </div>
                   </div>
                 </div>

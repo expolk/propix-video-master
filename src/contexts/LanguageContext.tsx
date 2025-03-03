@@ -50,6 +50,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 
   // Translation function
   const t = (key: string): string => {
+    if (!key) return "";
     return translations[key] || key;
   };
 
