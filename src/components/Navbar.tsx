@@ -1,13 +1,14 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,18 +25,17 @@ const Navbar = () => {
     };
   }, []);
 
-  // Close mobile menu when navigating to a new page
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
 
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "How It Works", path: "/how-it-works" },
-    { name: "Templates", path: "/templates" },
-    { name: "Pricing", path: "/pricing" },
-    { name: "Who We Are", path: "/about" },
-    { name: "Contact", path: "/contact" },
+    { name: t("home"), path: "/" },
+    { name: t("how_it_works"), path: "/how-it-works" },
+    { name: t("templates"), path: "/templates" },
+    { name: t("pricing"), path: "/pricing" },
+    { name: t("who_we_are"), path: "/about" },
+    { name: t("contact"), path: "/contact" },
   ];
 
   return (
@@ -55,7 +55,6 @@ const Navbar = () => {
           <span className="text-propix-800">pix</span>
         </Link>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <Link
@@ -77,7 +76,6 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           aria-label={isOpen ? "Close Menu" : "Open Menu"}
           onClick={() => setIsOpen(!isOpen)}
@@ -87,7 +85,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Navigation */}
       <div
         className={cn(
           "fixed inset-0 bg-white z-40 pt-20 px-6 transform transition-transform duration-300 ease-in-out md:hidden",

@@ -1,11 +1,14 @@
 
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface BrandCarouselProps {
   className?: string;
 }
 
 const BrandCarousel = ({ className }: BrandCarouselProps) => {
+  const { t } = useLanguage();
+  
   const brands = [
     { name: "Merck", logo: "/placeholder.svg" },
     { name: "Target", logo: "/placeholder.svg" },
@@ -29,7 +32,7 @@ const BrandCarousel = ({ className }: BrandCarouselProps) => {
     <div className={cn("relative overflow-hidden", className)}>
       <div className="max-w-7xl mx-auto px-6 py-4">
         <p className="text-center text-sm font-medium text-gray-500 mb-6">
-          TRUSTED BY LEADING REAL ESTATE BRANDS
+          {t("trusted_brands")}
         </p>
       </div>
       
