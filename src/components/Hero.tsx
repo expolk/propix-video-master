@@ -2,26 +2,29 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface HeroProps {
   className?: string;
 }
 
 const Hero = ({ className }: HeroProps) => {
+  const { t } = useLanguage();
+  
   return (
     <div className={cn("hero-gradient min-h-screen flex items-center pt-20", className)}>
       <div className="container px-6 mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1 animate-fade-in-up">
             <div className="inline-block bg-propix-50 text-propix-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6 animate-fade-in">
-              #1 Video App for Real Estate Agents
+              {t("hero_badge")}
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-6 text-balance">
-              Create Stunning Real Estate Videos in{" "}
-              <span className="text-propix-600">Minutes</span>
+              {t("hero_title_part1")}{" "}
+              <span className="text-propix-600">{t("hero_title_part2")}</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg">
-              Transform your property listings with professional videos made right from your phone. No special skills required—just you and Propix.
+              {t("hero_subtitle")}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
@@ -29,14 +32,14 @@ const Hero = ({ className }: HeroProps) => {
                 to="/pricing" 
                 className="button-glow bg-propix-600 hover:bg-propix-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 text-center flex items-center justify-center"
               >
-                Get Started
+                {t("hero_cta")}
                 <ArrowRight size={18} className="ml-2" />
               </Link>
               <Link 
                 to="/how-it-works" 
                 className="bg-white border border-gray-200 hover:border-propix-300 text-gray-800 px-8 py-3 rounded-lg font-medium transition-all duration-300 text-center"
               >
-                See How It Works
+                {t("hero_secondary_cta")}
               </Link>
             </div>
             
@@ -48,7 +51,7 @@ const Hero = ({ className }: HeroProps) => {
                   </svg>
                 ))}
               </span>
-              <span>Rated 4.9/5 from over 1,200 real estate agents</span>
+              <span>{t("hero_rating")}</span>
             </div>
           </div>
           
@@ -57,7 +60,7 @@ const Hero = ({ className }: HeroProps) => {
               <div className="bg-propix-50 rounded-2xl p-4 shadow-xl transform rotate-[-3deg] z-10 relative">
                 <img 
                   src="/placeholder.svg" 
-                  alt="Propix app interface showing video creation" 
+                  alt={t("hero_image_alt")} 
                   className="rounded-lg w-full shadow-inner object-cover"
                   width={600}
                   height={400}
@@ -66,7 +69,7 @@ const Hero = ({ className }: HeroProps) => {
               <div className="absolute top-10 -right-4 bg-white p-3 rounded-xl shadow-lg animate-fade-in" style={{ animationDelay: "0.3s" }}>
                 <img 
                   src="/placeholder.svg" 
-                  alt="Propix template selection" 
+                  alt={t("hero_template_image_alt")} 
                   className="rounded-lg h-32 w-32 object-cover" 
                   width={128}
                   height={128}
@@ -75,7 +78,7 @@ const Hero = ({ className }: HeroProps) => {
               <div className="absolute -bottom-8 -left-4 bg-white p-3 rounded-xl shadow-lg animate-fade-in" style={{ animationDelay: "0.6s" }}>
                 <img 
                   src="/placeholder.svg" 
-                  alt="Real estate agent using Propix" 
+                  alt={t("hero_agent_image_alt")} 
                   className="rounded-lg h-32 w-48 object-cover"
                   width={192}
                   height={128}

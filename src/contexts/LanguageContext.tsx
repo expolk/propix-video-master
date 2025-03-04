@@ -7,7 +7,7 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   translations: Record<string, string>;
-  t: (key: string) => string;
+  t: (key: string, params?: Record<string, string | number>) => string;
 }
 
 const defaultLanguage: Language = "en";
@@ -22,7 +22,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     // Check if user has previously selected a language
     const savedLanguage = localStorage.getItem("preferredLanguage") as Language;
-    if (savedLanguage) {
+    if (savedLanguage && (savedLanguage === "en" || savedLanguage === "es")) {
       setLanguage(savedLanguage);
     }
   }, []);
@@ -33,6 +33,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
       try {
         // Import the translations dynamically based on the selected language
         const translationsModule = await import(`../translations/${language}.json`);
+        console.log(`Loaded translations for ${language}`, translationsModule.default);
         setTranslations(translationsModule.default);
       } catch (error) {
         console.error("Failed to load translations:", error);
@@ -47,9 +48,19 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem("preferredLanguage", language);
   }, [language]);
 
-  // Translation function
-  const t = (key: string): string => {
-    return translations[key] || key;
+  // Enhanced translation function that supports template parameters
+  const t = (key: string, params?: Record<string, string | number>): string => {
+    let text = translations[key] || key;
+    
+    // If params are provided, replace placeholders in the text
+    if (params) {
+      Object.entries(params).forEach(([paramKey, paramValue]) => {
+        const regex = new RegExp(`{${paramKey}}`, 'g');
+        text = text.replace(regex, String(paramValue));
+      });
+    }
+    
+    return text;
   };
 
   return (
