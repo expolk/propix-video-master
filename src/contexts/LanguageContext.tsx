@@ -66,17 +66,19 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   // Force re-render when language changes
   useEffect(() => {
     console.log("Language changed to:", language);
+    // This is intentionally left here to help with debugging
   }, [language]);
 
+  // Creating a new object on each render to ensure context consumers update
+  const contextValue = {
+    language,
+    setLanguage,
+    translations,
+    t,
+  };
+
   return (
-    <LanguageContext.Provider
-      value={{
-        language,
-        setLanguage,
-        translations,
-        t,
-      }}
-    >
+    <LanguageContext.Provider value={contextValue}>
       {!isLoading && children}
     </LanguageContext.Provider>
   );

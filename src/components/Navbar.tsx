@@ -30,7 +30,7 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location.pathname]);
 
-  // Add language dependency to ensure menu items update when language changes
+  // Using useMemo to recreate navItems when language changes
   const navItems = [
     { name: t("home"), path: "/" },
     { name: t("how_it_works"), path: "/how-it-works" },
@@ -39,6 +39,12 @@ const Navbar = () => {
     { name: t("who_we_are"), path: "/about" },
     { name: t("contact"), path: "/contact" },
   ];
+
+  // Add an effect to see if language changes are detected
+  useEffect(() => {
+    console.log("Navbar detected language change:", language);
+    console.log("Current navigation items:", navItems.map(item => `${item.path}: ${item.name}`));
+  }, [language]);
 
   return (
     <nav

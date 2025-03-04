@@ -17,7 +17,13 @@ const LanguageSelector = ({
   const { language, setLanguage, t } = useLanguage();
   const [hasSelected, setHasSelected] = useState(!initialSelection);
 
+  // Log language changes for debugging
+  useEffect(() => {
+    console.log("LanguageSelector detected language change:", language);
+  }, [language]);
+
   const handleLanguageChange = (newLanguage: "en" | "es") => {
+    console.log("Setting language to:", newLanguage);
     setLanguage(newLanguage);
     if (initialSelection) {
       setHasSelected(true);
@@ -29,7 +35,9 @@ const LanguageSelector = ({
 
   // For dropdown version
   const toggleLanguage = () => {
-    setLanguage(language === "en" ? "es" : "en");
+    const newLanguage = language === "en" ? "es" : "en";
+    console.log("Toggling language to:", newLanguage);
+    setLanguage(newLanguage);
   };
 
   if (initialSelection && !hasSelected) {
