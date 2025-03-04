@@ -1,76 +1,91 @@
 
-import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
-const Hero = () => {
-  const { t } = useLanguage();
-  
+interface HeroProps {
+  className?: string;
+}
+
+const Hero = ({ className }: HeroProps) => {
   return (
-    <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-propix-50 to-white">
-      <div className="max-w-7xl mx-auto">
+    <div className={cn("hero-gradient min-h-screen flex items-center pt-20", className)}>
+      <div className="container px-6 mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="animate-fade-in-up">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              {t("hero_title")}
+          <div className="order-2 lg:order-1 animate-fade-in-up">
+            <div className="inline-block bg-propix-50 text-propix-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6 animate-fade-in">
+              #1 Video App for Real Estate Agents
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-6 text-balance">
+              Create Stunning Real Estate Videos in{" "}
+              <span className="text-propix-600">Minutes</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-lg">
-              {t("hero_subtitle")}
+            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg">
+              Transform your property listings with professional videos made right from your phone. No special skills required—just you and Propix.
             </p>
+            
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
-                to="/pricing"
-                className="inline-flex items-center justify-center bg-propix-600 hover:bg-propix-700 text-white font-medium px-6 py-3 rounded-lg transition-colors"
+                to="/pricing" 
+                className="button-glow bg-propix-600 hover:bg-propix-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 text-center flex items-center justify-center"
               >
-                {t("hero_cta")}
+                Get Started
+                <ArrowRight size={18} className="ml-2" />
               </Link>
               <Link 
-                to="/how-it-works"
-                className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-800 font-medium px-6 py-3 rounded-lg border border-gray-200 transition-colors"
+                to="/how-it-works" 
+                className="bg-white border border-gray-200 hover:border-propix-300 text-gray-800 px-8 py-3 rounded-lg font-medium transition-all duration-300 text-center"
               >
-                {t("hero_secondary_cta")}
-                <ArrowRight className="ml-2 h-5 w-5" />
+                See How It Works
               </Link>
             </div>
-          </div>
-          
-          <div className="relative animate-fade-in-up order-first lg:order-last">
-            <div className="bg-white p-2 rounded-2xl shadow-xl overflow-hidden">
-              <img 
-                src="/placeholder.svg" 
-                alt="Propix App Interface" 
-                className="w-full rounded-xl"
-              />
-            </div>
             
-            <div className="absolute -bottom-6 -left-6 bg-propix-600 text-white p-4 rounded-lg shadow-lg">
-              <div className="flex items-center">
-                <div className="bg-white rounded-full p-2 mr-3">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 5V19L19 12L8 5Z" fill="#4F46E5"/>
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-bold">65K+</p>
-                  <p className="text-xs">Property Videos</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="absolute -top-6 -right-6 bg-white p-3 rounded-lg shadow-lg border border-gray-100">
-              <div className="flex items-center space-x-1 text-yellow-400">
+            <div className="mt-8 flex items-center space-x-2 text-gray-500 text-sm">
+              <span className="flex">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                   </svg>
                 ))}
+              </span>
+              <span>Rated 4.9/5 from over 1,200 real estate agents</span>
+            </div>
+          </div>
+          
+          <div className="order-1 lg:order-2 animate-fade-in">
+            <div className="relative">
+              <div className="bg-propix-50 rounded-2xl p-4 shadow-xl transform rotate-[-3deg] z-10 relative">
+                <img 
+                  src="/placeholder.svg" 
+                  alt="Propix app interface showing video creation" 
+                  className="rounded-lg w-full shadow-inner object-cover"
+                  width={600}
+                  height={400}
+                />
               </div>
-              <p className="text-xs text-gray-600 mt-1">4.9/5 Rating</p>
+              <div className="absolute top-10 -right-4 bg-white p-3 rounded-xl shadow-lg animate-fade-in" style={{ animationDelay: "0.3s" }}>
+                <img 
+                  src="/placeholder.svg" 
+                  alt="Propix template selection" 
+                  className="rounded-lg h-32 w-32 object-cover" 
+                  width={128}
+                  height={128}
+                />
+              </div>
+              <div className="absolute -bottom-8 -left-4 bg-white p-3 rounded-xl shadow-lg animate-fade-in" style={{ animationDelay: "0.6s" }}>
+                <img 
+                  src="/placeholder.svg" 
+                  alt="Real estate agent using Propix" 
+                  className="rounded-lg h-32 w-48 object-cover"
+                  width={192}
+                  height={128}
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

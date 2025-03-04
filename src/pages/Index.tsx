@@ -7,13 +7,11 @@ import FeatureCard from "@/components/FeatureCard";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BrandCarousel from "@/components/BrandCarousel";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [visibleSection, setVisibleSection] = useState<string | null>(null);
-  const { t } = useLanguage();
 
   const handlePlayVideo = () => {
     if (videoRef.current) {
@@ -98,10 +96,10 @@ const Index = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-fade-in-up">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-                {t("features_title")}
+                Why Real Estate Agents <span className="text-propix-600">Love Propix</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                {t("features_subtitle")}
+                Propix helps you create stunning property videos that sell listings faster and impress potential clients.
               </p>
             </div>
             
@@ -126,10 +124,10 @@ const Index = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="animate-fade-in-up">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-                  {t("how_it_works_title")}
+                  Create Stunning Videos in <span className="text-propix-600">3 Simple Steps</span>
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
-                  {t("how_it_works_subtitle")}
+                  Propix makes video creation effortless, even if you've never edited a video before.
                 </p>
                 
                 <div className="space-y-6">
@@ -138,9 +136,9 @@ const Index = () => {
                       1
                     </div>
                     <div>
-                      <h3 className="text-xl font-medium text-gray-900 mb-2">{t("step1_title")}</h3>
+                      <h3 className="text-xl font-medium text-gray-900 mb-2">Capture Property Footage</h3>
                       <p className="text-gray-600">
-                        {t("step1_description")}
+                        Use your smartphone to capture videos and photos of the property. The app guides you on what shots to take.
                       </p>
                     </div>
                   </div>
@@ -150,9 +148,9 @@ const Index = () => {
                       2
                     </div>
                     <div>
-                      <h3 className="text-xl font-medium text-gray-900 mb-2">{t("step2_title")}</h3>
+                      <h3 className="text-xl font-medium text-gray-900 mb-2">Select a Template</h3>
                       <p className="text-gray-600">
-                        {t("step2_description")}
+                        Choose from dozens of professionally designed templates tailored specifically for real estate.
                       </p>
                     </div>
                   </div>
@@ -162,9 +160,9 @@ const Index = () => {
                       3
                     </div>
                     <div>
-                      <h3 className="text-xl font-medium text-gray-900 mb-2">{t("step3_title")}</h3>
+                      <h3 className="text-xl font-medium text-gray-900 mb-2">Customize & Share</h3>
                       <p className="text-gray-600">
-                        {t("step3_description")}
+                        Add your branding, text, and music. Export and share directly to social media, email, or MLS.
                       </p>
                     </div>
                   </div>
@@ -175,7 +173,7 @@ const Index = () => {
                     to="/how-it-works" 
                     className="inline-flex items-center text-propix-600 font-medium hover:text-propix-700 transition-colors"
                   >
-                    {t("learn_more")}
+                    Learn more about how Propix works
                     <ArrowRight size={16} className="ml-2" />
                   </Link>
                 </div>
@@ -227,10 +225,10 @@ const Index = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-fade-in-up">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-                {t("testimonials_title")}
+                Trusted by <span className="text-propix-600">Thousands</span> of Agents
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                {t("testimonials_subtitle")}
+                Don't just take our word for it. Here's what real estate professionals are saying about Propix.
               </p>
             </div>
             
@@ -277,10 +275,10 @@ const Index = () => {
           <div className="max-w-7xl mx-auto text-center">
             <div className="mb-8 animate-fade-in-up">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                {t("cta_title")}
+                Ready to Transform Your Listings?
               </h2>
               <p className="text-xl opacity-90 max-w-2xl mx-auto">
-                {t("cta_subtitle")}
+                Join thousands of successful agents already using Propix to create stunning property videos.
               </p>
             </div>
             
@@ -289,7 +287,7 @@ const Index = () => {
                 to="/pricing" 
                 className="bg-white text-propix-700 hover:bg-gray-100 px-8 py-3 rounded-lg font-medium transition-all duration-300 inline-flex items-center"
               >
-                {t("get_started")}
+                Get Started Today
                 <ArrowRight size={18} className="ml-2" />
               </Link>
             </div>
