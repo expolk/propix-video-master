@@ -63,6 +63,11 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     return text;
   };
 
+  // Force re-render when language changes
+  useEffect(() => {
+    console.log("Language changed to:", language);
+  }, [language]);
+
   return (
     <LanguageContext.Provider
       value={{

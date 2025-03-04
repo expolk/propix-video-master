@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -8,7 +9,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +30,7 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location.pathname]);
 
+  // Add language dependency to ensure menu items update when language changes
   const navItems = [
     { name: t("home"), path: "/" },
     { name: t("how_it_works"), path: "/how-it-works" },
@@ -58,7 +60,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <Link
-              key={item.name}
+              key={item.path}
               to={item.path}
               className={cn(
                 "text-sm font-medium transition-colors hover:text-propix-600 relative group",
@@ -94,7 +96,7 @@ const Navbar = () => {
         <div className="flex flex-col space-y-6">
           {navItems.map((item) => (
             <Link
-              key={item.name}
+              key={item.path}
               to={item.path}
               className={cn(
                 "text-lg font-medium py-2 border-b border-gray-100 transition-colors",
