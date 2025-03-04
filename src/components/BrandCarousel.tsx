@@ -10,22 +10,22 @@ const BrandCarousel = ({ className }: BrandCarouselProps) => {
   const { t } = useLanguage();
   
   const brands = [
-    { name: t("brand_name_merck"), logo: "https://upload.wikimedia.org/wikipedia/commons/7/76/Merck_%26_Co.svg" },
-    { name: t("brand_name_target"), logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Target_logo.svg" },
-    { name: t("brand_name_pentax"), logo: "https://upload.wikimedia.org/wikipedia/commons/f/f4/Pentax_logo.svg" },
-    { name: t("brand_name_p&g"), logo: "https://upload.wikimedia.org/wikipedia/commons/8/85/Procter_%26_Gamble_logo.svg" },
-    { name: t("brand_name_meta"), logo: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Meta_Platforms_Inc._logo.svg" },
-    { name: t("brand_name_amazon"), logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
-    { name: t("brand_name_google"), logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
-    { name: t("brand_name_bbc"), logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/BBC_Logo_2021.svg" },
-    { name: t("brand_name_nbc"), logo: "https://upload.wikimedia.org/wikipedia/commons/8/8c/NBC_logo_%282022%29.svg" },
-    { name: t("brand_name_ubs"), logo: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Logo_of_UBS.svg" },
+    { name: t("brand_name_merck"), logo: "/lovable-uploads/04f50804-182d-418b-9477-2d6eb1262d45.png" },
+    { name: t("brand_name_target"), logo: "/lovable-uploads/04f50804-182d-418b-9477-2d6eb1262d45.png" },
+    { name: t("brand_name_pentax"), logo: "/lovable-uploads/04f50804-182d-418b-9477-2d6eb1262d45.png" },
+    { name: t("brand_name_p&g"), logo: "/lovable-uploads/04f50804-182d-418b-9477-2d6eb1262d45.png" },
+    { name: t("brand_name_meta"), logo: "/lovable-uploads/04f50804-182d-418b-9477-2d6eb1262d45.png" },
+    { name: t("brand_name_amazon"), logo: "/lovable-uploads/04f50804-182d-418b-9477-2d6eb1262d45.png" },
+    { name: t("brand_name_google"), logo: "/lovable-uploads/04f50804-182d-418b-9477-2d6eb1262d45.png" },
+    { name: t("brand_name_bbc"), logo: "/lovable-uploads/04f50804-182d-418b-9477-2d6eb1262d45.png" },
+    { name: t("brand_name_nbc"), logo: "/lovable-uploads/04f50804-182d-418b-9477-2d6eb1262d45.png" },
+    { name: t("brand_name_ubs"), logo: "/lovable-uploads/04f50804-182d-418b-9477-2d6eb1262d45.png" },
     // Duplicating to create a seamless loop effect
-    { name: t("brand_name_merck"), logo: "https://upload.wikimedia.org/wikipedia/commons/7/76/Merck_%26_Co.svg" },
-    { name: t("brand_name_target"), logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Target_logo.svg" },
-    { name: t("brand_name_pentax"), logo: "https://upload.wikimedia.org/wikipedia/commons/f/f4/Pentax_logo.svg" },
-    { name: t("brand_name_p&g"), logo: "https://upload.wikimedia.org/wikipedia/commons/8/85/Procter_%26_Gamble_logo.svg" },
-    { name: t("brand_name_meta"), logo: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Meta_Platforms_Inc._logo.svg" },
+    { name: t("brand_name_merck"), logo: "/lovable-uploads/04f50804-182d-418b-9477-2d6eb1262d45.png" },
+    { name: t("brand_name_target"), logo: "/lovable-uploads/04f50804-182d-418b-9477-2d6eb1262d45.png" },
+    { name: t("brand_name_pentax"), logo: "/lovable-uploads/04f50804-182d-418b-9477-2d6eb1262d45.png" },
+    { name: t("brand_name_p&g"), logo: "/lovable-uploads/04f50804-182d-418b-9477-2d6eb1262d45.png" },
+    { name: t("brand_name_meta"), logo: "/lovable-uploads/04f50804-182d-418b-9477-2d6eb1262d45.png" },
   ];
 
   return (
