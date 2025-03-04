@@ -38,7 +38,7 @@ const Hero = () => {
             <div className="bg-white p-2 rounded-2xl shadow-xl overflow-hidden">
               <img 
                 src="/placeholder.svg" 
-                alt={t("Propix App Interface")} 
+                alt="Propix App Interface" 
                 className="w-full rounded-xl"
               />
             </div>
@@ -52,7 +52,7 @@ const Hero = () => {
                 </div>
                 <div>
                   <p className="font-bold">65K+</p>
-                  <p className="text-xs">{t("Property Videos")}</p>
+                  <p className="text-xs">Property Videos</p>
                 </div>
               </div>
             </div>
@@ -65,7 +65,7 @@ const Hero = () => {
                   </svg>
                 ))}
               </div>
-              <p className="text-xs text-gray-600 mt-1">{t("4.9/5 Rating")}</p>
+              <p className="text-xs text-gray-600 mt-1">4.9/5 Rating</p>
             </div>
           </div>
         </div>
