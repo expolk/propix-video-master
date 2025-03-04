@@ -34,6 +34,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         // Import the translations dynamically based on the selected language
         const translationsModule = await import(`../translations/${language}.json`);
         setTranslations(translationsModule.default);
+        console.log(`Loaded translations for: ${language}`, translationsModule.default);
       } catch (error) {
         console.error("Failed to load translations:", error);
         // Fallback to empty translations object
