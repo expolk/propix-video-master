@@ -10,22 +10,22 @@ const BrandCarousel = ({ className }: BrandCarouselProps) => {
   const { t } = useLanguage();
   
   const brands = [
-    { name: t("brand_name_merck"), logo: "/placeholder.svg" },
-    { name: t("brand_name_target"), logo: "/placeholder.svg" },
-    { name: t("brand_name_pentax"), logo: "/placeholder.svg" },
-    { name: t("brand_name_p&g"), logo: "/placeholder.svg" },
-    { name: t("brand_name_meta"), logo: "/placeholder.svg" },
-    { name: t("brand_name_amazon"), logo: "/placeholder.svg" },
-    { name: t("brand_name_google"), logo: "/placeholder.svg" },
-    { name: t("brand_name_bbc"), logo: "/placeholder.svg" },
-    { name: t("brand_name_nbc"), logo: "/placeholder.svg" },
-    { name: t("brand_name_ubs"), logo: "/placeholder.svg" },
+    { name: t("brand_name_merck"), logo: "https://upload.wikimedia.org/wikipedia/commons/7/76/Merck_%26_Co.svg" },
+    { name: t("brand_name_target"), logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Target_logo.svg" },
+    { name: t("brand_name_pentax"), logo: "https://upload.wikimedia.org/wikipedia/commons/f/f4/Pentax_logo.svg" },
+    { name: t("brand_name_p&g"), logo: "https://upload.wikimedia.org/wikipedia/commons/8/85/Procter_%26_Gamble_logo.svg" },
+    { name: t("brand_name_meta"), logo: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Meta_Platforms_Inc._logo.svg" },
+    { name: t("brand_name_amazon"), logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
+    { name: t("brand_name_google"), logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
+    { name: t("brand_name_bbc"), logo: "https://upload.wikimedia.org/wikipedia/commons/4/41/BBC_Logo_2021.svg" },
+    { name: t("brand_name_nbc"), logo: "https://upload.wikimedia.org/wikipedia/commons/8/8c/NBC_logo_%282022%29.svg" },
+    { name: t("brand_name_ubs"), logo: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Logo_of_UBS.svg" },
     // Duplicating to create a seamless loop effect
-    { name: t("brand_name_merck"), logo: "/placeholder.svg" },
-    { name: t("brand_name_target"), logo: "/placeholder.svg" },
-    { name: t("brand_name_pentax"), logo: "/placeholder.svg" },
-    { name: t("brand_name_p&g"), logo: "/placeholder.svg" },
-    { name: t("brand_name_meta"), logo: "/placeholder.svg" },
+    { name: t("brand_name_merck"), logo: "https://upload.wikimedia.org/wikipedia/commons/7/76/Merck_%26_Co.svg" },
+    { name: t("brand_name_target"), logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Target_logo.svg" },
+    { name: t("brand_name_pentax"), logo: "https://upload.wikimedia.org/wikipedia/commons/f/f4/Pentax_logo.svg" },
+    { name: t("brand_name_p&g"), logo: "https://upload.wikimedia.org/wikipedia/commons/8/85/Procter_%26_Gamble_logo.svg" },
+    { name: t("brand_name_meta"), logo: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Meta_Platforms_Inc._logo.svg" },
   ];
 
   return (
