@@ -29,20 +29,20 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <LanguageProvider>
-          <Toaster />
-          <Sonner />
-          
-          {/* Language selector overlay on first visit */}
-          <LanguageSelector 
-            initialSelection={showInitialLanguageSelector} 
-            onInitialSelectionComplete={handleLanguageSelectionComplete}
-          />
-          
-          {/* Floating language switcher button (always visible) */}
-          {hasSelectedLanguage && <LanguageSelector />}
-          
-          <BrowserRouter>
+        <BrowserRouter>
+          <LanguageProvider>
+            <Toaster />
+            <Sonner />
+            
+            {/* Language selector overlay on first visit */}
+            <LanguageSelector 
+              initialSelection={showInitialLanguageSelector} 
+              onInitialSelectionComplete={handleLanguageSelectionComplete}
+            />
+            
+            {/* Floating language switcher button (always visible) */}
+            {hasSelectedLanguage && <LanguageSelector />}
+            
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/how-it-works" element={<HowItWorks />} />
@@ -53,8 +53,8 @@ const App = () => {
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
-        </LanguageProvider>
+          </LanguageProvider>
+        </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
   );

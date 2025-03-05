@@ -4,6 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useLocation } from "react-router-dom";
 
 interface LanguageSelectorProps {
   initialSelection?: boolean;
@@ -16,11 +17,17 @@ const LanguageSelector = ({
 }: LanguageSelectorProps) => {
   const { language, setLanguage, t } = useLanguage();
   const [hasSelected, setHasSelected] = useState(!initialSelection);
+  const location = useLocation();
 
   // Log language changes for debugging
   useEffect(() => {
     console.log("LanguageSelector detected language change:", language);
   }, [language]);
+
+  // Force refresh when route changes
+  useEffect(() => {
+    console.log("LanguageSelector detected route change:", location.pathname);
+  }, [location.pathname]);
 
   const handleLanguageChange = (newLanguage: "en" | "es") => {
     console.log("Setting language to:", newLanguage);

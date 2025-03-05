@@ -1,5 +1,6 @@
 
 import React, { createContext, useState, useContext, useEffect, ReactNode } from "react";
+import { useLocation } from "react-router-dom";
 
 type Language = "en" | "es";
 
@@ -18,6 +19,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>(defaultLanguage);
   const [translations, setTranslations] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     // Check if user has previously selected a language
@@ -26,6 +28,11 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
       setLanguage(savedLanguage);
     }
   }, []);
+
+  // Force context refresh on location change
+  useEffect(() => {
+    console.log("Route changed, refreshing language context");
+  }, [location]);
 
   useEffect(() => {
     const loadTranslations = async () => {
@@ -62,12 +69,6 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     
     return text;
   };
-
-  // Force re-render when language changes
-  useEffect(() => {
-    console.log("Language changed to:", language);
-    // This is intentionally left here to help with debugging
-  }, [language]);
 
   // Creating a new object on each render to ensure context consumers update
   const contextValue = {

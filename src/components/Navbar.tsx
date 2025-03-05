@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -10,6 +10,16 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { t, language } = useLanguage();
+
+  // Create navigation items when language changes or route changes
+  const navItems = useMemo(() => [
+    { name: t("home"), path: "/" },
+    { name: t("how_it_works"), path: "/how-it-works" },
+    { name: t("templates"), path: "/templates" },
+    { name: t("pricing"), path: "/pricing" },
+    { name: t("who_we_are"), path: "/about" },
+    { name: t("contact"), path: "/contact" },
+  ], [t, language]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,21 +40,16 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location.pathname]);
 
-  // Using useMemo to recreate navItems when language changes
-  const navItems = [
-    { name: t("home"), path: "/" },
-    { name: t("how_it_works"), path: "/how-it-works" },
-    { name: t("templates"), path: "/templates" },
-    { name: t("pricing"), path: "/pricing" },
-    { name: t("who_we_are"), path: "/about" },
-    { name: t("contact"), path: "/contact" },
-  ];
-
   // Add an effect to see if language changes are detected
   useEffect(() => {
     console.log("Navbar detected language change:", language);
     console.log("Current navigation items:", navItems.map(item => `${item.path}: ${item.name}`));
-  }, [language]);
+  }, [language, navItems]);
+
+  // Add an effect to log route changes
+  useEffect(() => {
+    console.log("Route changed to:", location.pathname);
+  }, [location.pathname]);
 
   return (
     <nav
