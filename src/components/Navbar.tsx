@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -19,7 +19,7 @@ const Navbar = () => {
     { name: t("pricing"), path: "/pricing" },
     { name: t("who_we_are"), path: "/about" },
     { name: t("contact"), path: "/contact" },
-  ], [t, language, location.pathname]); // Force re-creation of nav items when path changes
+  ], [t, language]); // Force re-creation of nav items when language changes
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,6 +45,11 @@ const Navbar = () => {
     console.log("Navbar language update:", language);
     console.log("Current navigation items:", navItems.map(item => `${item.path}: ${item.name}`));
   }, [language, navItems]);
+
+  // Use useCallback for handlers to improve performance
+  const toggleMenu = useCallback(() => {
+    setIsOpen(prev => !prev);
+  }, []);
 
   return (
     <nav
@@ -86,7 +91,7 @@ const Navbar = () => {
 
         <button
           aria-label={isOpen ? "Close Menu" : "Open Menu"}
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={toggleMenu}
           className="md:hidden text-gray-800 focus:outline-none"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}

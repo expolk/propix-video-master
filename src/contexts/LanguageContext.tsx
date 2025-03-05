@@ -1,5 +1,5 @@
 
-import React, { createContext, useState, useContext, useEffect, ReactNode } from "react";
+import React, { createContext, useState, useContext, useEffect, ReactNode, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 
 type Language = "en" | "es";
@@ -36,6 +36,10 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     setForceUpdate(prev => prev + 1); // Trigger re-render on route change
   }, [location.pathname]);
 
+  // Use memo to create a stable reference for translations based on language + forceUpdate
+  const translationsKey = useMemo(() => `${language}-${forceUpdate}-${location.pathname}`, 
+    [language, forceUpdate, location.pathname]);
+
   useEffect(() => {
     const loadTranslations = async () => {
       setIsLoading(true);
@@ -55,7 +59,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     loadTranslations();
     // Save language preference
     localStorage.setItem("preferredLanguage", language);
-  }, [language, forceUpdate, location.pathname]); // Update when pathname changes
+  }, [translationsKey]); // Update based on the memoized key
 
   // Enhanced translation function that supports template parameters
   const t = (key: string, params?: Record<string, string | number>): string => {
@@ -72,13 +76,13 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     return text;
   };
 
-  // Creating a new object on each render to ensure context consumers update
-  const contextValue = {
+  // Creating a memoized context value to prevent unnecessary renders
+  const contextValue = useMemo(() => ({
     language,
     setLanguage,
     translations,
     t,
-  };
+  }), [language, translations, translationsKey]);
 
   return (
     <LanguageContext.Provider value={contextValue}>

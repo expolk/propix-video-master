@@ -1,10 +1,10 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import LanguageSelector from "@/components/LanguageSelector";
 import Index from "./pages/Index";
@@ -15,11 +15,16 @@ import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
-
-const App = () => {
+// Create a component to handle route changes and language selection
+const AppContent = () => {
   const [showInitialLanguageSelector, setShowInitialLanguageSelector] = useState(true);
   const [hasSelectedLanguage, setHasSelectedLanguage] = useState(false);
+  const location = useLocation();
+
+  // Reset initial state on route change for consistent behavior
+  useEffect(() => {
+    console.log("App detected route change:", location.pathname);
+  }, [location.pathname]);
 
   const handleLanguageSelectionComplete = () => {
     setShowInitialLanguageSelector(false);
@@ -27,31 +32,41 @@ const App = () => {
   };
 
   return (
+    <>
+      <Toaster />
+      <Sonner />
+      
+      {/* Language selector overlay on first visit */}
+      <LanguageSelector 
+        initialSelection={showInitialLanguageSelector} 
+        onInitialSelectionComplete={handleLanguageSelectionComplete}
+      />
+      
+      {/* Floating language switcher button (always visible) */}
+      {hasSelectedLanguage && <LanguageSelector />}
+      
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
+        <Route path="/templates" element={<Templates />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
+  );
+};
+
+const queryClient = new QueryClient();
+
+const App = () => {
+  return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <BrowserRouter>
           <LanguageProvider>
-            <Toaster />
-            <Sonner />
-            
-            {/* Language selector overlay on first visit */}
-            <LanguageSelector 
-              initialSelection={showInitialLanguageSelector} 
-              onInitialSelectionComplete={handleLanguageSelectionComplete}
-            />
-            
-            {/* Floating language switcher button (always visible) */}
-            {hasSelectedLanguage && <LanguageSelector />}
-            
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/how-it-works" element={<HowItWorks />} />
-              <Route path="/templates" element={<Templates />} />
-              <Route path="/pricing" element={<Pricing />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <AppContent />
           </LanguageProvider>
         </BrowserRouter>
       </TooltipProvider>

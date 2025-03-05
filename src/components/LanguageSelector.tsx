@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -29,7 +29,7 @@ const LanguageSelector = ({
     console.log("LanguageSelector detected route change:", location.pathname);
   }, [location.pathname]);
 
-  const handleLanguageChange = (newLanguage: "en" | "es") => {
+  const handleLanguageChange = useCallback((newLanguage: "en" | "es") => {
     console.log("Setting language to:", newLanguage);
     setLanguage(newLanguage);
     if (initialSelection) {
@@ -38,14 +38,14 @@ const LanguageSelector = ({
         onInitialSelectionComplete();
       }
     }
-  };
+  }, [initialSelection, onInitialSelectionComplete, setLanguage]);
 
-  // For dropdown version
-  const toggleLanguage = () => {
+  // For dropdown version - with useCallback for stability
+  const toggleLanguage = useCallback(() => {
     const newLanguage = language === "en" ? "es" : "en";
     console.log("Toggling language to:", newLanguage);
     setLanguage(newLanguage);
-  };
+  }, [language, setLanguage]);
 
   if (initialSelection && !hasSelected) {
     return (
