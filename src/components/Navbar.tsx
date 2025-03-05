@@ -19,7 +19,7 @@ const Navbar = () => {
     { name: t("pricing"), path: "/pricing" },
     { name: t("who_we_are"), path: "/about" },
     { name: t("contact"), path: "/contact" },
-  ], [t, language]);
+  ], [t, language, location.pathname]); // Force re-creation of nav items when path changes
 
   useEffect(() => {
     const handleScroll = () => {
