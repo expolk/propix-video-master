@@ -40,16 +40,11 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location.pathname]);
 
-  // Add an effect to see if language changes are detected
+  // Log language changes for debugging
   useEffect(() => {
-    console.log("Navbar detected language change:", language);
+    console.log("Navbar language update:", language);
     console.log("Current navigation items:", navItems.map(item => `${item.path}: ${item.name}`));
   }, [language, navItems]);
-
-  // Add an effect to log route changes
-  useEffect(() => {
-    console.log("Route changed to:", location.pathname);
-  }, [location.pathname]);
 
   return (
     <nav

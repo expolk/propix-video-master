@@ -55,7 +55,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     loadTranslations();
     // Save language preference
     localStorage.setItem("preferredLanguage", language);
-  }, [language, forceUpdate, location.pathname]); // Add location.pathname to dependencies for more reliable updates
+  }, [language, forceUpdate, location.pathname]); // Update when pathname changes
 
   // Enhanced translation function that supports template parameters
   const t = (key: string, params?: Record<string, string | number>): string => {
