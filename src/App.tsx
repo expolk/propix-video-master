@@ -30,30 +30,60 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <BrowserRouter>
-          <LanguageProvider>
-            <Toaster />
-            <Sonner />
-            
-            {/* Language selector overlay on first visit */}
-            <LanguageSelector 
-              initialSelection={showInitialLanguageSelector} 
-              onInitialSelectionComplete={handleLanguageSelectionComplete}
-            />
-            
-            {/* Floating language switcher button (always visible) */}
-            {hasSelectedLanguage && <LanguageSelector />}
-            
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/how-it-works" element={<HowItWorks />} />
-              <Route path="/templates" element={<Templates />} />
-              <Route path="/pricing" element={<Pricing />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </LanguageProvider>
+          <Toaster />
+          <Sonner />
+          
+          <Routes>
+            <Route path="/" element={
+              <LanguageProvider>
+                {/* Language selector overlay on first visit */}
+                <LanguageSelector 
+                  initialSelection={showInitialLanguageSelector} 
+                  onInitialSelectionComplete={handleLanguageSelectionComplete}
+                />
+                
+                {/* Floating language switcher button (always visible) */}
+                {hasSelectedLanguage && <LanguageSelector />}
+                <Index />
+              </LanguageProvider>
+            } />
+            <Route path="/how-it-works" element={
+              <LanguageProvider>
+                <LanguageSelector />
+                <HowItWorks />
+              </LanguageProvider>
+            } />
+            <Route path="/templates" element={
+              <LanguageProvider>
+                <LanguageSelector />
+                <Templates />
+              </LanguageProvider>
+            } />
+            <Route path="/pricing" element={
+              <LanguageProvider>
+                <LanguageSelector />
+                <Pricing />
+              </LanguageProvider>
+            } />
+            <Route path="/about" element={
+              <LanguageProvider>
+                <LanguageSelector />
+                <About />
+              </LanguageProvider>
+            } />
+            <Route path="/contact" element={
+              <LanguageProvider>
+                <LanguageSelector />
+                <Contact />
+              </LanguageProvider>
+            } />
+            <Route path="*" element={
+              <LanguageProvider>
+                <LanguageSelector />
+                <NotFound />
+              </LanguageProvider>
+            } />
+          </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

@@ -20,6 +20,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [translations, setTranslations] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
+  const [forceUpdate, setForceUpdate] = useState(0); // Added to force re-renders
 
   useEffect(() => {
     // Check if user has previously selected a language
@@ -32,7 +33,8 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   // Force context refresh on location change
   useEffect(() => {
     console.log("Route changed, refreshing language context");
-  }, [location]);
+    setForceUpdate(prev => prev + 1); // Trigger re-render on route change
+  }, [location.pathname]);
 
   useEffect(() => {
     const loadTranslations = async () => {
@@ -53,7 +55,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     loadTranslations();
     // Save language preference
     localStorage.setItem("preferredLanguage", language);
-  }, [language]);
+  }, [language, forceUpdate]); // Add forceUpdate to dependencies
 
   // Enhanced translation function that supports template parameters
   const t = (key: string, params?: Record<string, string | number>): string => {
