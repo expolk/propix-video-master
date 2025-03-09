@@ -16,30 +16,18 @@ const defaultLanguage: Language = "en";
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>(defaultLanguage);
+  const [language, setLanguage] = useState<Language>(() => {
+    const savedLanguage = localStorage.getItem("preferredLanguage") as Language;
+    return (savedLanguage && (savedLanguage === "en" || savedLanguage === "es")) 
+      ? savedLanguage 
+      : defaultLanguage;
+  });
+  
   const [translations, setTranslations] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
-  const [forceUpdate, setForceUpdate] = useState(0);
 
-  useEffect(() => {
-    // Check if user has previously selected a language
-    const savedLanguage = localStorage.getItem("preferredLanguage") as Language;
-    if (savedLanguage && (savedLanguage === "en" || savedLanguage === "es")) {
-      setLanguage(savedLanguage);
-    }
-  }, []);
-
-  // Force context refresh on location change
-  useEffect(() => {
-    console.log("Route changed, refreshing language context");
-    setForceUpdate(prev => prev + 1); // Trigger re-render on route change
-  }, [location.pathname]);
-
-  // Use memo to create a stable reference for translations based on language + forceUpdate
-  const translationsKey = useMemo(() => `${language}-${forceUpdate}-${location.pathname}`, 
-    [language, forceUpdate, location.pathname]);
-
+  // Load translations whenever language changes
   useEffect(() => {
     const loadTranslations = async () => {
       setIsLoading(true);
@@ -59,7 +47,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     loadTranslations();
     // Save language preference
     localStorage.setItem("preferredLanguage", language);
-  }, [translationsKey]); // Update based on the memoized key
+  }, [language, location.pathname]);
 
   // Enhanced translation function that supports template parameters
   const t = (key: string, params?: Record<string, string | number>): string => {
@@ -82,7 +70,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     setLanguage,
     translations,
     t,
-  }), [language, translations, translationsKey]);
+  }), [language, translations]);
 
   return (
     <LanguageContext.Provider value={contextValue}>

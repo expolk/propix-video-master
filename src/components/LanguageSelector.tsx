@@ -4,7 +4,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useLocation } from "react-router-dom";
 
 interface LanguageSelectorProps {
   initialSelection?: boolean;
@@ -16,27 +15,14 @@ const LanguageSelector = ({
   onInitialSelectionComplete
 }: LanguageSelectorProps) => {
   const { language, setLanguage, t } = useLanguage();
-  const [hasSelected, setHasSelected] = useState(!initialSelection);
-  const location = useLocation();
 
-  // Log language changes for debugging
-  useEffect(() => {
-    console.log("LanguageSelector detected language change:", language);
-  }, [language]);
-
-  // Force refresh when route changes
-  useEffect(() => {
-    console.log("LanguageSelector detected route change:", location.pathname);
-  }, [location.pathname]);
-
+  // Handle language change
   const handleLanguageChange = useCallback((newLanguage: "en" | "es") => {
     console.log("Setting language to:", newLanguage);
     setLanguage(newLanguage);
-    if (initialSelection) {
-      setHasSelected(true);
-      if (onInitialSelectionComplete) {
-        onInitialSelectionComplete();
-      }
+    
+    if (initialSelection && onInitialSelectionComplete) {
+      onInitialSelectionComplete();
     }
   }, [initialSelection, onInitialSelectionComplete, setLanguage]);
 
@@ -47,7 +33,7 @@ const LanguageSelector = ({
     setLanguage(newLanguage);
   }, [language, setLanguage]);
 
-  if (initialSelection && !hasSelected) {
+  if (initialSelection) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50">
         <div className="bg-white rounded-lg p-8 shadow-2xl max-w-md w-full animate-zoom-in">
@@ -67,7 +53,7 @@ const LanguageSelector = ({
               )}
             >
               <span className="text-xl mr-3">🇺🇸</span>
-              <span className="font-medium">{t("english")}</span>
+              <span className="font-medium">English</span>
             </button>
             
             <button
@@ -80,14 +66,13 @@ const LanguageSelector = ({
               )}
             >
               <span className="text-xl mr-3">🇪🇸</span>
-              <span className="font-medium">{t("spanish")}</span>
+              <span className="font-medium">Español</span>
             </button>
           </div>
           
           <Button 
             className="w-full mt-6 bg-propix-600 hover:bg-propix-700"
             onClick={() => {
-              setHasSelected(true);
               if (onInitialSelectionComplete) {
                 onInitialSelectionComplete();
               }
