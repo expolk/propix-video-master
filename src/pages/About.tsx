@@ -3,9 +3,11 @@ import { useEffect, useRef } from "react";
 import { ArrowRight, Map, Users, Heart, Award, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const About = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { t } = useLanguage();
   
   useEffect(() => {
     const options = {
@@ -34,63 +36,63 @@ const About = () => {
   
   const team = [
     {
-      name: "Alex Johnson",
-      title: "CEO & Co-Founder",
+      name: t("team_member1_name") || "Alex Johnson",
+      title: t("team_member1_title") || "CEO & Co-Founder",
       image: "/placeholder.svg",
-      bio: "Former real estate agent with 10+ years experience. Alex founded Propix after experiencing firsthand the challenges of creating quality property videos."
+      bio: t("team_member1_bio") || "Former real estate agent with 10+ years experience. Alex founded Propix after experiencing firsthand the challenges of creating quality property videos."
     },
     {
-      name: "Sarah Chen",
-      title: "CTO & Co-Founder",
+      name: t("team_member2_name") || "Sarah Chen",
+      title: t("team_member2_title") || "CTO & Co-Founder",
       image: "/placeholder.svg",
-      bio: "Engineering leader with experience at top tech companies. Sarah leads our technology team, focusing on creating intuitive and powerful video creation tools."
+      bio: t("team_member2_bio") || "Engineering leader with experience at top tech companies. Sarah leads our technology team, focusing on creating intuitive and powerful video creation tools."
     },
     {
-      name: "Michael Rodriguez",
-      title: "Head of Product",
+      name: t("team_member3_name") || "Michael Rodriguez",
+      title: t("team_member3_title") || "Head of Product",
       image: "/placeholder.svg",
-      bio: "Product visionary with experience in both real estate and tech. Michael ensures Propix delivers the features agents need most."
+      bio: t("team_member3_bio") || "Product visionary with experience in both real estate and tech. Michael ensures Propix delivers the features agents need most."
     },
     {
-      name: "Jessica Williams",
-      title: "Creative Director",
+      name: t("team_member4_name") || "Jessica Williams",
+      title: t("team_member4_title") || "Creative Director",
       image: "/placeholder.svg",
-      bio: "Award-winning filmmaker and designer. Jessica oversees all template designs and video styles to ensure professional quality."
+      bio: t("team_member4_bio") || "Award-winning filmmaker and designer. Jessica oversees all template designs and video styles to ensure professional quality."
     },
     {
-      name: "David Park",
-      title: "Head of Customer Success",
+      name: t("team_member5_name") || "David Park",
+      title: t("team_member5_title") || "Head of Customer Success",
       image: "/placeholder.svg",
-      bio: "Customer experience expert dedicated to helping real estate professionals get the most out of Propix."
+      bio: t("team_member5_bio") || "Customer experience expert dedicated to helping real estate professionals get the most out of Propix."
     },
     {
-      name: "Emma Lewis",
-      title: "Marketing Director",
+      name: t("team_member6_name") || "Emma Lewis",
+      title: t("team_member6_title") || "Marketing Director",
       image: "/placeholder.svg",
-      bio: "Digital marketing strategist who helps agents understand how video can transform their business."
+      bio: t("team_member6_bio") || "Digital marketing strategist who helps agents understand how video can transform their business."
     }
   ];
   
   const values = [
     {
       icon: Users,
-      title: "Customer Obsession",
-      description: "We put our real estate customers at the center of everything we do, constantly innovating based on their needs."
+      title: t("value1_title") || "Customer Obsession",
+      description: t("value1_description") || "We put our real estate customers at the center of everything we do, constantly innovating based on their needs."
     },
     {
       icon: Heart,
-      title: "Passion for Quality",
-      description: "We're committed to creating the highest quality video tools that help agents showcase properties at their absolute best."
+      title: t("value2_title") || "Passion for Quality",
+      description: t("value2_description") || "We're committed to creating the highest quality video tools that help agents showcase properties at their absolute best."
     },
     {
       icon: Map,
-      title: "Simplicity First",
-      description: "We believe powerful technology should be simple to use. Our intuitive design makes professional video creation accessible to everyone."
+      title: t("value3_title") || "Simplicity First",
+      description: t("value3_description") || "We believe powerful technology should be simple to use. Our intuitive design makes professional video creation accessible to everyone."
     },
     {
       icon: Award,
-      title: "Constant Innovation",
-      description: "We never stop improving, constantly seeking new ways to make property video creation faster, easier, and more effective."
+      title: t("value4_title") || "Constant Innovation",
+      description: t("value4_description") || "We never stop improving, constantly seeking new ways to make property video creation faster, easier, and more effective."
     }
   ];
   
@@ -103,40 +105,40 @@ const About = () => {
           {/* Hero Section */}
           <div className="text-center mb-20 animate-fade-in-up">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              We're Transforming Real Estate Marketing
+              {t("about_hero_title") || "We're Transforming Real Estate Marketing"}
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Propix was founded with a simple mission: make professional property videos accessible to every real estate agent, regardless of their technical skills.
+              {t("about_hero_subtitle") || "Propix was founded with a simple mission: make professional property videos accessible to every real estate agent, regardless of their technical skills."}
             </p>
           </div>
           
           {/* Vision & Mission */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24 animate-on-scroll">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Vision</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t("our_vision") || "Our Vision"}</h2>
               <p className="text-lg text-gray-700 mb-8">
-                We envision a world where every property listing includes a professional, engaging video tour. Where real estate agents can focus on what they do best—selling homes—while having the tools to create stunning visual content with minimal effort.
+                {t("vision_paragraph1") || "We envision a world where every property listing includes a professional, engaging video tour. Where real estate agents can focus on what they do best—selling homes—while having the tools to create stunning visual content with minimal effort."}
               </p>
               <p className="text-lg text-gray-700 mb-8">
-                Propix is leading this transformation by combining powerful video technology with an interface so simple anyone can use it. No more expensive equipment, complicated software, or outsourced video production.
+                {t("vision_paragraph2") || "Propix is leading this transformation by combining powerful video technology with an interface so simple anyone can use it. No more expensive equipment, complicated software, or outsourced video production."}
               </p>
               <div className="space-y-4">
                 <div className="flex items-start">
                   <ChevronRight className="h-6 w-6 text-propix-600 mr-2 flex-shrink-0 mt-0.5" />
                   <p className="text-gray-700">
-                    <span className="font-medium">For agents:</span> More impressive listings that sell faster and help win more clients.
+                    <span className="font-medium">{t("for_agents_title") || "For agents"}:</span> {t("for_agents_text") || "More impressive listings that sell faster and help win more clients."}
                   </p>
                 </div>
                 <div className="flex items-start">
                   <ChevronRight className="h-6 w-6 text-propix-600 mr-2 flex-shrink-0 mt-0.5" />
                   <p className="text-gray-700">
-                    <span className="font-medium">For buyers:</span> Better property insights before scheduling in-person viewings.
+                    <span className="font-medium">{t("for_buyers_title") || "For buyers"}:</span> {t("for_buyers_text") || "Better property insights before scheduling in-person viewings."}
                   </p>
                 </div>
                 <div className="flex items-start">
                   <ChevronRight className="h-6 w-6 text-propix-600 mr-2 flex-shrink-0 mt-0.5" />
                   <p className="text-gray-700">
-                    <span className="font-medium">For sellers:</span> Maximum exposure and presentation for their most valuable asset.
+                    <span className="font-medium">{t("for_sellers_title") || "For sellers"}:</span> {t("for_sellers_text") || "Maximum exposure and presentation for their most valuable asset."}
                   </p>
                 </div>
               </div>
@@ -151,7 +153,7 @@ const About = () => {
                   controls
                 >
                   <source src="https://example.com/our-story.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
+                  {t("video_not_supported") || "Your browser does not support the video tag."}
                 </video>
               </div>
             </div>
@@ -160,9 +162,9 @@ const About = () => {
           {/* Our Story */}
           <div className="mb-24 animate-on-scroll">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Story</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">{t("our_story") || "Our Story"}</h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                How a frustrated real estate agent and a tech innovator joined forces to create Propix.
+                {t("our_story_subtitle") || "How a frustrated real estate agent and a tech innovator joined forces to create Propix."}
               </p>
             </div>
             
@@ -173,9 +175,9 @@ const About = () => {
                 <div className="relative flex items-center">
                   <div className="flex-1 pr-8 md:pr-16 text-right">
                     <div className="text-propix-600 font-medium mb-2">2019</div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">The Problem</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{t("story_step1_title") || "The Problem"}</h3>
                     <p className="text-gray-700">
-                      Alex Johnson, a successful real estate agent, was frustrated with the options for creating property videos: hire expensive videographers, learn complex video editing, or use unprofessional-looking simple tools.
+                      {t("story_step1_text") || "Alex Johnson, a successful real estate agent, was frustrated with the options for creating property videos: hire expensive videographers, learn complex video editing, or use unprofessional-looking simple tools."}
                     </p>
                   </div>
                   
@@ -195,9 +197,9 @@ const About = () => {
                   
                   <div className="flex-1 pl-8 md:pl-16">
                     <div className="text-propix-600 font-medium mb-2">2020</div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">The Idea</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{t("story_step2_title") || "The Idea"}</h3>
                     <p className="text-gray-700">
-                      Alex met Sarah Chen, a tech leader with a background in video processing, at a real estate technology conference. They recognized the massive opportunity to build a specialized video creation tool just for real estate professionals.
+                      {t("story_step2_text") || "Alex met Sarah Chen, a tech leader with a background in video processing, at a real estate technology conference. They recognized the massive opportunity to build a specialized video creation tool just for real estate professionals."}
                     </p>
                   </div>
                 </div>
@@ -205,9 +207,9 @@ const About = () => {
                 <div className="relative flex items-center">
                   <div className="flex-1 pr-8 md:pr-16 text-right">
                     <div className="text-propix-600 font-medium mb-2">2021</div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Propix Is Born</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{t("story_step3_title") || "Propix Is Born"}</h3>
                     <p className="text-gray-700">
-                      After months of development and testing with real estate agents, the first version of Propix was launched. The response was immediate and overwhelming, with agents praising its simplicity and professional results.
+                      {t("story_step3_text") || "After months of development and testing with real estate agents, the first version of Propix was launched. The response was immediate and overwhelming, with agents praising its simplicity and professional results."}
                     </p>
                   </div>
                   
@@ -227,19 +229,19 @@ const About = () => {
                   
                   <div className="flex-1 pl-8 md:pl-16">
                     <div className="text-propix-600 font-medium mb-2">2022</div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Growing Fast</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{t("story_step4_title") || "Growing Fast"}</h3>
                     <p className="text-gray-700">
-                      Propix secured Series A funding to accelerate growth. The team expanded to include top talent from both real estate and technology backgrounds, united by the mission to transform property marketing.
+                      {t("story_step4_text") || "Propix secured Series A funding to accelerate growth. The team expanded to include top talent from both real estate and technology backgrounds, united by the mission to transform property marketing."}
                     </p>
                   </div>
                 </div>
                 
                 <div className="relative flex items-center">
                   <div className="flex-1 pr-8 md:pr-16 text-right">
-                    <div className="text-propix-600 font-medium mb-2">Today</div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Trusted By Thousands</h3>
+                    <div className="text-propix-600 font-medium mb-2">{t("today") || "Today"}</div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{t("story_step5_title") || "Trusted By Thousands"}</h3>
                     <p className="text-gray-700">
-                      Today, Propix is used by thousands of real estate professionals across the country. We continue to innovate and improve, guided by our users' feedback and our mission to make professional property videos accessible to all.
+                      {t("story_step5_text") || "Today, Propix is used by thousands of real estate professionals across the country. We continue to innovate and improve, guided by our users' feedback and our mission to make professional property videos accessible to all."}
                     </p>
                   </div>
                   
@@ -256,9 +258,9 @@ const About = () => {
           {/* Core Values */}
           <div className="mb-24 animate-on-scroll">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Core Values</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">{t("core_values_title") || "Our Core Values"}</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                The principles that guide everything we do at Propix.
+                {t("core_values_subtitle") || "The principles that guide everything we do at Propix."}
               </p>
             </div>
             
@@ -281,9 +283,9 @@ const About = () => {
           {/* Meet the Team */}
           <div className="mb-24 animate-on-scroll">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">{t("team_title") || "Meet Our Team"}</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                The passionate people behind Propix who are dedicated to transforming real estate marketing.
+                {t("team_subtitle") || "The passionate people behind Propix who are dedicated to transforming real estate marketing."}
               </p>
             </div>
             
@@ -313,9 +315,9 @@ const About = () => {
           {/* Press & Recognition */}
           <div className="mb-24 animate-on-scroll">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Press & Recognition</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">{t("press_title") || "Press & Recognition"}</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Propix has been featured in leading real estate and technology publications.
+                {t("press_subtitle") || "Propix has been featured in leading real estate and technology publications."}
               </p>
             </div>
             
@@ -324,7 +326,7 @@ const About = () => {
                 <div key={index} className="grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                   <img 
                     src="/placeholder.svg" 
-                    alt="Publication logo" 
+                    alt={t("publication_logo") || "Publication logo"} 
                     className="h-12 w-auto mx-auto"
                   />
                 </div>
@@ -336,15 +338,15 @@ const About = () => {
           <div className="bg-propix-50 rounded-2xl p-8 md:p-12 animate-on-scroll">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">Join Our Team</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">{t("join_team_title") || "Join Our Team"}</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  We're always looking for passionate people to join our mission of transforming real estate marketing with video technology.
+                  {t("join_team_subtitle") || "We're always looking for passionate people to join our mission of transforming real estate marketing with video technology."}
                 </p>
                 <p className="text-gray-700 mb-8">
-                  Whether you're a developer, designer, marketer, or have experience in real estate, we'd love to hear from you. Check out our open positions or send us your resume.
+                  {t("join_team_description") || "Whether you're a developer, designer, marketer, or have experience in real estate, we'd love to hear from you. Check out our open positions or send us your resume."}
                 </p>
                 <button className="inline-flex items-center bg-propix-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-propix-700 transition-colors">
-                  View Open Positions
+                  {t("view_positions") || "View Open Positions"}
                   <ArrowRight size={18} className="ml-2" />
                 </button>
               </div>
@@ -352,7 +354,7 @@ const About = () => {
               <div>
                 <img 
                   src="/placeholder.svg" 
-                  alt="Propix team working together" 
+                  alt={t("team_working_image_alt") || "Propix team working together"} 
                   className="w-full rounded-xl"
                 />
               </div>
