@@ -134,5 +134,24 @@
   "ready_to_create": "Ready to Create Amazing Videos?",
   "download_app_cta": "Download the Propix app today and start creating professional property videos in minutes.",
   "app_store": "App Store",
-  "google_play": "Google Play"
+  "google_play": "Google Play",
+  
+  "email_us": "Email Us",
+  "call_us": "Call Us",
+  "visit_us": "Visit Us",
+  "follow_us": "Follow Us",
+  "send_message": "Send Us A Message",
+  "business_hours": "Monday-Friday: 9am-6pm EST",
+  "united_states": "United States",
+  "office_location": "Propix Office Location",
+  "faq_title": "Frequently Asked Questions",
+  "faq_subtitle": "Can't find the answer you're looking for? Reach out to our customer support team.",
+  "faq1_question": "How long does it take to create a video?",
+  "faq1_answer": "With Propix, you can create professional-quality property videos in as little as 5 minutes, from capturing footage to sharing your final video.",
+  "faq2_question": "Do I need special equipment?",
+  "faq2_answer": "No special equipment needed! All you need is your smartphone. Propix works great with both iPhone and Android devices.",
+  "faq3_question": "Can I add my own branding?",
+  "faq3_answer": "Absolutely! Propix allows you to add your logo, custom colors, and contact information to all your videos for consistent branding.",
+  "faq4_question": "What if I need help?",
+  "faq4_answer": "We offer comprehensive support including in-app tutorials, knowledge base articles, and a dedicated support team to assist you."
 }

@@ -27,7 +27,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
 
-  // Load translations whenever language changes
+  // Load translations whenever language changes or route changes
   useEffect(() => {
     const loadTranslations = async () => {
       setIsLoading(true);
@@ -47,7 +47,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     loadTranslations();
     // Save language preference
     localStorage.setItem("preferredLanguage", language);
-  }, [language, location.pathname]);
+  }, [language]);
 
   // Enhanced translation function that supports template parameters
   const t = (key: string, params?: Record<string, string | number>): string => {

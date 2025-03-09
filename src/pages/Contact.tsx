@@ -3,8 +3,11 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Contact = () => {
+  const { t } = useLanguage();
+
   return (
     <>
       <Navbar />
@@ -12,22 +15,22 @@ const Contact = () => {
       <main className="pt-28 pb-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12 animate-fade-in-up">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Get In Touch</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{t("footer_contact_us")}</h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Have questions about Propix? Our team is here to help you succeed with your real estate videos.
+              {t("cta_subtitle")}
             </p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="col-span-1 order-2 lg:order-1 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
               <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 h-full">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">{t("footer_contact_us")}</h2>
                 
                 <div className="space-y-6">
                   <div className="flex items-start">
                     <Mail className="h-6 w-6 text-propix-600 mt-1 mr-4 flex-shrink-0" />
                     <div>
-                      <h3 className="font-medium text-gray-900 mb-1">Email Us</h3>
+                      <h3 className="font-medium text-gray-900 mb-1">{t("email_us")}</h3>
                       <a href="mailto:hello@propix.com" className="text-gray-600 hover:text-propix-600 transition-colors">
                         hello@propix.com
                       </a>
@@ -37,12 +40,12 @@ const Contact = () => {
                   <div className="flex items-start">
                     <Phone className="h-6 w-6 text-propix-600 mt-1 mr-4 flex-shrink-0" />
                     <div>
-                      <h3 className="font-medium text-gray-900 mb-1">Call Us</h3>
+                      <h3 className="font-medium text-gray-900 mb-1">{t("call_us")}</h3>
                       <a href="tel:+1234567890" className="text-gray-600 hover:text-propix-600 transition-colors">
                         (123) 456-7890
                       </a>
                       <p className="text-sm text-gray-500 mt-1">
-                        Monday-Friday: 9am-6pm EST
+                        {t("business_hours")}
                       </p>
                     </div>
                   </div>
@@ -50,18 +53,18 @@ const Contact = () => {
                   <div className="flex items-start">
                     <MapPin className="h-6 w-6 text-propix-600 mt-1 mr-4 flex-shrink-0" />
                     <div>
-                      <h3 className="font-medium text-gray-900 mb-1">Visit Us</h3>
+                      <h3 className="font-medium text-gray-900 mb-1">{t("visit_us")}</h3>
                       <address className="text-gray-600 not-italic">
-                        123 Real Estate Way<br />
-                        San Francisco, CA 94103<br />
-                        United States
+                        {t("footer_address_line1")}<br />
+                        {t("footer_address_line2")}<br />
+                        {t("united_states")}
                       </address>
                     </div>
                   </div>
                 </div>
                 
                 <div className="mt-8 pt-8 border-t border-gray-100">
-                  <h3 className="font-medium text-gray-900 mb-3">Follow Us</h3>
+                  <h3 className="font-medium text-gray-900 mb-3">{t("follow_us")}</h3>
                   <div className="flex space-x-4">
                     <a 
                       href="https://facebook.com" 
@@ -114,7 +117,7 @@ const Contact = () => {
             
             <div className="col-span-2 order-1 lg:order-2 animate-fade-in-up">
               <div className="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-gray-100">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Send Us A Message</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">{t("send_message")}</h2>
                 <ContactForm />
               </div>
             </div>
@@ -125,7 +128,7 @@ const Contact = () => {
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100">
               <div className="aspect-[16/7] w-full relative">
                 <iframe
-                  title="Propix Office Location"
+                  title={t("office_location")}
                   className="absolute inset-0 w-full h-full"
                   frameBorder="0"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50470.28711896148!2d-122.43297820795224!3d37.77725075591309!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sca!4v1625184107289!5m2!1sen!2sca"
@@ -139,38 +142,38 @@ const Contact = () => {
           {/* FAQ Section */}
           <div className="mt-16 animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">{t("faq_title")}</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Can't find the answer you're looking for? Reach out to our customer support team.
+                {t("faq_subtitle")}
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                <h3 className="font-bold text-lg text-gray-900 mb-3">How long does it take to create a video?</h3>
+                <h3 className="font-bold text-lg text-gray-900 mb-3">{t("faq1_question")}</h3>
                 <p className="text-gray-600">
-                  With Propix, you can create professional-quality property videos in as little as 5 minutes, from capturing footage to sharing your final video.
+                  {t("faq1_answer")}
                 </p>
               </div>
               
               <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                <h3 className="font-bold text-lg text-gray-900 mb-3">Do I need special equipment?</h3>
+                <h3 className="font-bold text-lg text-gray-900 mb-3">{t("faq2_question")}</h3>
                 <p className="text-gray-600">
-                  No special equipment needed! All you need is your smartphone. Propix works great with both iPhone and Android devices.
+                  {t("faq2_answer")}
                 </p>
               </div>
               
               <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                <h3 className="font-bold text-lg text-gray-900 mb-3">Can I add my own branding?</h3>
+                <h3 className="font-bold text-lg text-gray-900 mb-3">{t("faq3_question")}</h3>
                 <p className="text-gray-600">
-                  Absolutely! Propix allows you to add your logo, custom colors, and contact information to all your videos for consistent branding.
+                  {t("faq3_answer")}
                 </p>
               </div>
               
               <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                <h3 className="font-bold text-lg text-gray-900 mb-3">What if I need help?</h3>
+                <h3 className="font-bold text-lg text-gray-900 mb-3">{t("faq4_question")}</h3>
                 <p className="text-gray-600">
-                  We offer comprehensive support including in-app tutorials, knowledge base articles, and a dedicated support team to assist you.
+                  {t("faq4_answer")}
                 </p>
               </div>
             </div>
